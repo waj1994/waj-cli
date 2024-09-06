@@ -1,11 +1,14 @@
-# waj-cli
+## waj-cli
 
 ### Install
+
 ```bash
 npm install -g waj-cli
 waj -h
 ```
-## Usage
+
+### Usage
+
 ```bash
 waj init my-project
 # or
