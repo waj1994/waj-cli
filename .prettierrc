@@ -1,0 +1,16 @@
+{
+  "experimentalTernaries": false,
+  "printWidth": 80,
+  "tabWidth": 2,
+  "useTabs": false,
+  "semi": true,
+  "singleQuote": true,
+  "quoteProps": "as-needed",
+  "trailingComma": "none",
+  "bracketSpacing": true,
+  "arrowParens": "avoid",
+  "embeddedLanguageFormatting": "auto",
+  "proseWrap": "always",
+  "endOfLine": "auto",
+  "plugins": ["prettier-plugin-packagejson"]
+}
