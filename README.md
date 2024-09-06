@@ -1,15 +1,17 @@
 ## waj-cli
 
+用于快速创建项目的脚手架工具
+
 ### Install
 
-```bash
+```shell
 npm install -g waj-cli
 waj -h
 ```
 
 ### Usage
 
-```bash
+```shell
 waj init my-project
 # or
 waj init
