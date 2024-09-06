@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "keywords": [],
-  "license": "ISC",
   "author": "",
   "main": "index.js",
   "bin": {
@@ -14,6 +13,11 @@
     "lib",
     "template"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waj1994/waj-cli.git"
+  },
+  "license": "MIT",
   "scripts": {
     "format": "prettier --cache --write .",
     "lint": "eslint --ext .js lib",
