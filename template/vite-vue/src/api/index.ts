@@ -19,7 +19,7 @@ const instance = axios.create({
 })
 
 instance.interceptors.request.use(
-  config => {
+  (config) => {
     // 携带token
     const token = sessionStorage.getItem('token')
     !!token && (config.headers.token = token)
@@ -29,7 +29,7 @@ instance.interceptors.request.use(
 )
 
 instance.interceptors.response.use(
-  res => {
+  (res) => {
     const {
       data: { code, message: resMessage, data }
     } = res
@@ -45,7 +45,7 @@ instance.interceptors.response.use(
     }
     return data
   },
-  error => {
+  (error) => {
     message.error(error.code === 'ERR_NETWORK' ? '网络连接错误' : '服务器错误')
     return Promise.reject(error)
   }

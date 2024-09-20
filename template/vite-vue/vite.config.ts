@@ -1,7 +1,6 @@
-import vue from '@vitejs/plugin-vue'
 import path from 'node:path'
+import vue from '@vitejs/plugin-vue'
 import { visualizer } from 'rollup-plugin-visualizer'
-import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
@@ -22,13 +21,16 @@ export default defineConfig(({ mode }) => ({
       imports: ['vue', 'vue-router']
     }),
     Components({
-      resolvers: [AntDesignVueResolver()]
+      resolvers: [
+        AntDesignVueResolver({
+          importStyle: false
+        })
+      ]
     }),
-    UnoCSS(),
     vue(),
     createSvgIconsPlugin({
       // 指定存放svg的文件夹路径
-      iconDirs: [path.resolve(__dirname, './src/assets/icons')],
+      iconDirs: [path.resolve(__dirname, './src/icons')],
       // 指定symbolId格式
       symbolId: 'icon-[name]',
       svgoOptions: {
@@ -43,11 +45,11 @@ export default defineConfig(({ mode }) => ({
         ]
       }
     }),
-    mode === 'production' &&
-      compression({
-        filter: new RegExp('\\.(' + ['css', 'js'].join('|') + ')$'),
-        threshold: 10240
-      }),
+    mode === 'production'
+    && compression({
+      filter: new RegExp(`\\.(${['css', 'js'].join('|')})$`),
+      threshold: 10240
+    }),
     visualizer({
       open: true // 自动打开
     })

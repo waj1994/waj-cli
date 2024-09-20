@@ -43,10 +43,12 @@ const count = ref(0)
     </a>
     in your IDE for a better DX
   </p>
-  <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
+  <p class="read-the-docs">
+    Click on the Vite and Vue logos to learn more
+  </p>
 </template>
 
-<style scoped>
+<style lang="less" scoped>
 .read-the-docs {
   width: auto;
   color: #888;

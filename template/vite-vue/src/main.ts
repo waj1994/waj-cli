@@ -7,7 +7,6 @@ import router from './router'
 
 import '@/assets/styles/index.less'
 import 'virtual:svg-icons-register'
-import 'virtual:uno.css'
 
 const app = createApp(App)
 const pinia = createPinia()

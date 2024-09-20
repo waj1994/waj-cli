@@ -1,5 +1,5 @@
+import { existsSync, rmSync, writeFileSync } from 'node:fs'
 import AmdZip from 'adm-zip'
-import { existsSync, rmSync, writeFileSync } from 'fs'
 
 const zip = new AmdZip()
 

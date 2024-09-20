@@ -1,4 +1,11 @@
 <!-- svg图标组件 -->
+<script setup lang="ts">
+const props = defineProps<{
+  name: string
+  color?: string
+}>()
+</script>
+
 <template>
   <svg
     h-1em
@@ -12,10 +19,3 @@
     <use :xlink:href="`#icon-${props.name}`" />
   </svg>
 </template>
-
-<script setup lang="ts">
-const props = defineProps<{
-  name: string
-  color?: string
-}>()
-</script>
