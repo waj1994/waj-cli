@@ -29,6 +29,7 @@
     "@commitlint/cli": "^19.8.0",
     "@commitlint/config-conventional": "^19.8.0",
     "@eslint/js": "^9.21.0",
+    "@prettier/plugin-xml": "^3.4.1",
     "@svgr/plugin-svgo": "^8.1.0",
     "@tailwindcss/vite": "^4.0.16",
     "@types/react": "^18.2.0",

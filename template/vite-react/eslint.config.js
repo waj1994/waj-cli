@@ -4,6 +4,7 @@ export default eslint({
   formatters: {
     html: true,
     css: true,
+    svg: true,
   },
   stylistic: {
     indent: 2,
