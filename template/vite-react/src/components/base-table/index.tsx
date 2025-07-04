@@ -7,7 +7,6 @@ import { useTableHeight } from './hooks/useTableHeight'
 
 export interface BaseTableProps<DataType, Params, ValueType>
   extends ProTableProps<DataType, Params, ValueType> {
-  residual?: number
   containerClass?: string
   order?: boolean
 }
@@ -20,17 +19,14 @@ export default function BaseTable<
   containerClass,
   order = true,
   columns,
-  residual = 0,
   request,
   ...props
 }: BaseTableProps<DataType, Params, ValueType>) {
   const containerRef = useRef<HTMLDivElement | null>(null)
-
   const height = useTableHeight(
     containerRef,
     document.querySelector('.table-search'),
-    residual
-    ?? 16
+    16
     + (props.toolBarRender ? 64 : 48)
     + 47
     + 48
@@ -63,6 +59,7 @@ export default function BaseTable<
         rowKey="id"
         request={localRequest}
         options={false}
+        size="middle"
         columns={
           order
             ? [

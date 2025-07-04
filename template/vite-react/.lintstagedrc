@@ -1,3 +1,6 @@
 {
-  "*.{js,jsx,ts,tsx,json,mjs,css,less,html,md,cjs,svg}": ["eslint --fix"]
+  "*.{md,json}": ["prettier --cache --write"],
+  "*.{js,jsx}": ["eslint --fix", "prettier --cache --write"],
+  "*.{css,less}": ["prettier --cache --write"],
+  "*.ts?(x)": ["eslint --fix", "prettier --cache --parser=typescript --write"]
 }

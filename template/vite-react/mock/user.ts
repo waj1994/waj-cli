@@ -1,12 +1,14 @@
+import { SUCCESS_CODE } from '../src/constants'
+
 export default [
   {
     url: '/api/user/list',
     method: 'get',
-    response: () => {
+    response: (req) => {
       return {
-        code: 200,
+        code: SUCCESS_CODE,
         data: {
-          'list|20': [
+          [`list|${req.query.size}`]: [
             {
               id: '@id',
               name: '@cname',

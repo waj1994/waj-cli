@@ -1,37 +1,57 @@
-import type { MenuDataItem } from '@ant-design/pro-layout/lib/typing'
-import type { RouteObject } from 'react-router-dom'
+import {
+  ElementType,
+  lazy,
+  LazyExoticComponent,
+  ReactElement,
+  Suspense
+} from 'react';
+import { type RouteObject, useRoutes } from 'react-router-dom';
 
-import { lazy, Suspense } from 'react'
-import { useRoutes } from 'react-router-dom'
+import Loading from '@/components/loading';
 
-export type RouteType = MenuDataItem
-
-const routes: RouteType[] = [
-  {
-    path: '/home',
-    component: lazy(() => import('@/pages/Home')),
-  },
-  {
-    path: '/list',
-    component: lazy(() => import('@/pages/List')),
-  },
-]
-
-type SyncRoutes = (routes: RouteType[]) => RouteObject[]
-const syncRoutes: SyncRoutes = (routes) => {
-  return routes.map((item) => {
-    return {
-      ...item,
-      element: (
-        <Suspense fallback={<div>loading...</div>}>
-          {item.component && <item.component />}
-        </Suspense>
-      ),
-      children: item.children && syncRoutes(item.children),
-    }
-  })
+export interface SyncRouteObject {
+  component: LazyExoticComponent<() => ReactElement> | ElementType;
+  path: string;
+  children?: SyncRouteObject[];
+  meta?: {
+    icon?: ReactElement;
+    title?: string;
+    menu?: boolean;
+  };
 }
 
-export default function Router() {
-  return useRoutes(syncRoutes(routes))
-}
+const routes: SyncRouteObject[] = [
+  {
+    path: '/',
+    component: lazy(() => import('@/components/Single')),
+    children: [
+      {
+        path: '',
+        component: lazy(() => import('@/pages/Home'))
+      },
+      {
+        path: '/table',
+        component: lazy(() => import('@/pages/table'))
+      }
+    ]
+  },
+  {
+    path: '*',
+    component: lazy(() => import('@/pages/404'))
+  }
+];
+
+type SyncRoutes = (routes: SyncRouteObject[]) => RouteObject[];
+const syncRoutes: SyncRoutes = routes => {
+  return routes.map(item => ({
+    ...item,
+    element: (
+      <Suspense fallback={<Loading />}>
+        <item.component />
+      </Suspense>
+    ),
+    children: item.children && syncRoutes(item.children)
+  }));
+};
+
+export default () => useRoutes(syncRoutes(routes));

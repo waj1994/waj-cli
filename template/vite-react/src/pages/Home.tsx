@@ -1,13 +1,14 @@
-/**
- * 首页
- */
-import { Button } from 'antd'
+import { Button } from 'antd';
 
 export default function Home() {
   return (
-    <div className="text-red-400">
-      <div>Home</div>
-      <Button type="primary">点击</Button>
+    <div
+      m="l-1em"
+      h="full"
+      text="base red-6"
+    >
+      Home
+      <Button>按钮</Button>
     </div>
-  )
+  );
 }

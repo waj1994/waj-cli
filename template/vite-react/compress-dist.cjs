@@ -1,11 +1,11 @@
-const fs = require('node:fs')
-const AmdZip = require('adm-zip')
+const AmdZip = require('adm-zip');
+const fs = require('fs');
 
-const zip = new AmdZip()
+const zip = new AmdZip();
 
-zip.addLocalFolder('./dist')
+zip.addLocalFolder('./dist');
 
 if (fs.existsSync('./dist.zip')) {
-  fs.rmSync('./dist.zip')
+  fs.rmSync('./dist.zip');
 }
-fs.writeFileSync('./dist.zip', zip.toBuffer())
+fs.writeFileSync('./dist.zip', zip.toBuffer());

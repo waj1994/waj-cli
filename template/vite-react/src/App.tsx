@@ -1,22 +1,10 @@
-import Router from '@/router'
-import Message from '@/utils/message'
-import { App as AntdApp, ConfigProvider } from 'antd'
-import zhCN from 'antd/locale/zh_CN'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom';
+import Router from './router';
 
-function App() {
+export default function App() {
   return (
     <BrowserRouter>
-      <ConfigProvider
-        locale={zhCN}
-      >
-        <AntdApp>
-          <Message />
-          <Router />
-        </AntdApp>
-      </ConfigProvider>
+      <Router />
     </BrowserRouter>
-  )
+  );
 }
-
-export default App

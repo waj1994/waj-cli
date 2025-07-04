@@ -9,8 +9,18 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   (config) => {
-    const token = sessionStorage.getItem('token')
-    token && (config.headers.authorization = token)
+    const { pageSize, ...obj } = config.params || {}
+    if (pageSize) {
+      config.params = {
+        ...obj,
+        size: pageSize,
+      }
+    }
+    // 统一添加token
+    const token = localStorage.getItem('token')
+    if (token) {
+      config.headers.token = `Bearer ${token}`
+    }
     return config
   },
   error => Promise.reject(error),

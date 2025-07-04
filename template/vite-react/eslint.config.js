@@ -1,31 +1,26 @@
-import eslint from '@antfu/eslint-config'
+import js from '@eslint/js';
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
+import { globalIgnores } from 'eslint/config';
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
 
-export default eslint({
-  formatters: {
-    html: true,
-    css: true,
-    svg: true,
-  },
-  stylistic: {
-    indent: 2,
-    quotes: 'single',
-  },
-  typescript: true,
-  vue: false,
-  ignores: ['node_modules/**', 'dist/**', 'stats.html'],
-  react: {
-    overrides: {
-      'style/jsx-max-props-per-line': [
-        'error',
-        {
-          maximum: 1,
-          when: 'always',
-        },
-      ],
-      'style/jsx-first-prop-new-line': ['error', 'multiline'],
+export default tseslint.config([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      js.configs.recommended,
+      tseslint.configs.recommended,
+      reactHooks.configs['recommended-latest'],
+      reactRefresh.configs.vite
+    ],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser
     },
-  },
-  rules: {
-    'no-console': 'off',
-  },
-})
+    rules: {
+      'react-refresh/only-export-components': 'off'
+    }
+  }
+]);

@@ -1,14 +1,10 @@
 import type { MessageInstance } from 'antd/es/message/interface'
 import type { ModalStaticFunctions } from 'antd/es/modal/confirm'
 import type { NotificationInstance } from 'antd/es/notification/interface'
-// Entry component
 import { App } from 'antd'
 
-// eslint-disable-next-line import/no-mutable-exports
 let message: MessageInstance
-// eslint-disable-next-line import/no-mutable-exports
 let notification: NotificationInstance
-// eslint-disable-next-line import/no-mutable-exports
 let modal: Omit<ModalStaticFunctions, 'warn'>
 
 export default () => {

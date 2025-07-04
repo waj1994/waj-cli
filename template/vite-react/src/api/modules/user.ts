@@ -1,10 +1,8 @@
-import type { User } from '@/pages/List'
-import type { PageParams, ResponseList } from '@/typing/axios'
-import $axios from '..'
+import instance from '@/api'
 
 /**
- * 获取用户列表
+ * 用户列表
  */
-export function getUserList(params: PageParams) {
-  return $axios.get<ResponseList<User>>('/user/list', { params })
+export const userList = (params: API.PageParams) => {
+  return instance.get<API.PageResponse<User.ListItem>>('/user/list', { params })
 }
