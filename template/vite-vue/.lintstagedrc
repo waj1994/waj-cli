@@ -1,3 +1,13 @@
 {
-  "*.{vue,js,ts,less,css,md,json}": ["eslint --fix"]
+  "*.{md,json,css,less,html,svg}": [
+    "prettier --cache --write"
+  ],
+  "*.{js,jsx,vue}": [
+    "oxlint --fix",
+    "prettier --cache --write"
+  ],
+  "*.{ts,tsx}": [
+    "oxlint --fix",
+    "prettier --cache --parser=typescript --write"
+  ]
 }

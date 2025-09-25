@@ -1,0 +1,5 @@
+export const CODE = {
+  TOKEN_INVALID: 2000,
+  SUCCESS: 0,
+  INVALID_TOKEN: -1
+}

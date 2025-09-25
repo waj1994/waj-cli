@@ -16,7 +16,6 @@ dist.*
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
-!.vscode/settings.json
 .idea
 .DS_Store
 *.suo
@@ -25,5 +24,4 @@ dist.*
 *.sln
 *.sw?
 
-auto-imports.d.ts
 stats.html

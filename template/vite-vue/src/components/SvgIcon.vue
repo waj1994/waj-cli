@@ -1,21 +1,33 @@
-<!-- svg图标组件 -->
 <script setup lang="ts">
-const props = defineProps<{
+interface Props {
   name: string
+  prefix?: string
   color?: string
+  size?: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  prefix: 'icon',
+  size: '24px'
+})
+defineEmits<{
+  click: []
 }>()
+
+const symbolId = computed(() => `#${props.prefix}-${props.name}`)
 </script>
 
 <template>
   <svg
-    h-1em
-    w-1em
-    overflow-hidden
-    fill-current
-    align-middle
-    v-bind="$attrs"
-    :style="{ color }"
+    aria-hidden="true"
+    class="svg-icon"
+    :width="size"
+    :height="size"
+    @click="$emit('click')"
   >
-    <use :xlink:href="`#icon-${props.name}`" />
+    <use
+      :xlink:href="symbolId"
+      fill="currentColor"
+    />
   </svg>
 </template>

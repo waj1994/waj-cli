@@ -1,25 +1,21 @@
-<!-- 首页 -->
 <script setup lang="ts">
-import { useCount } from '@/store/useCount'
+import { getDemo } from '@/api/modules/demo'
 
-const countStore = useCount()
-const title = ref('啥东西')
+async function getData() {
+  try {
+    const res = await getDemo()
+    console.log(res)
+  } catch {}
+}
+getData()
 </script>
 
 <template>
-  <div>
-    首页
-    {{ title }}
-    <router-link to="/help" class="test">
-      跳转到 帮助
-    </router-link>
-    <div>{{ countStore.doubleCount }}</div>
-    <a-button @click="countStore.increment">
-      increment
-    </a-button>
-    <a-button @click="countStore.decrement">
-      decrement
-    </a-button>
-    <svg-icon name="material" class="text-xl" />
-  </div>
+  <div>home</div>
+  <svg-icon
+    name="logo"
+    class="text-red-100"
+  />
 </template>
+
+<style lang="less" scoped></style>
